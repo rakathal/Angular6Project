@@ -1,3 +1,6 @@
 4 - reactive forms
 5 - Angular form control and form group
 6 - Angular nested form groups
+7 - Angular setvalue and patchvalue methods
+8 - Angular formbuilder example
+

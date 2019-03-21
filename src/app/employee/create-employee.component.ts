@@ -23,6 +23,33 @@ export class CreateEmployeeComponent implements OnInit {
     });
   }
 
+  // For Setting all the values
+  /*
+  onLoadDataClick(): void {
+    this.employeeForm.setValue({
+      fullName: 'Pragim Technologies',
+      email: 'raj@gmail.com',
+      skills: {
+        skillName: 'c#',
+        experienceInYears: 5,
+        proficiency: 'beginner'
+      }
+    });
+  }
+  */
+
+  // If you want to set only particulr value then you need to use patch value.
+
+  onLoadDataClick(): void {
+    this.employeeForm.patchValue({
+      fullName: 'Pragim Technologies',
+      email: 'raj@gmail.com',
+      skills: {
+        skillName: 'c#'
+      }
+    });
+  }
+
   onSubmit() {
     console.log(this.employeeForm.touched);
     console.log(this.employeeForm.value);

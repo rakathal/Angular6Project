@@ -27,7 +27,8 @@
             <input type="text" class="form-control" id="skillName" placeholder="Name" formControlName="skillName">
           </div>
           <div class="col-sm-4">
-            <input type="text" placeholder="Experience in Years" class="form-control" formControlName="experienceInYears">
+            <input type="text" placeholder="Experience in Years" class="form-control"
+              formControlName="experienceInYears">
           </div>
         </div>
 
@@ -50,7 +51,10 @@
 
     </div>
     <div class="panel-footer">
-      <button class="btn btn-primary" type="submit">Save</button>
+      <div class="btn-toolbar">
+        <button class="btn btn-primary" type="submit">Save</button>
+        <button class="btn btn-primary" type="button" (click)="onLoadDataClick()">Load Data</button>
+      </div>
     </div>
   </div>
 </form>
