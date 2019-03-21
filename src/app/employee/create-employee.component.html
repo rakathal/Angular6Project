@@ -8,7 +8,7 @@
       (employeeForm.get('fullName').touched || employeeForm.get('fullName').dirty) }">
         <label class="col-sm-2 control-label" for="fullName">Full Name</label>
         <div class="col-sm-8">
-          <label>{{ fullNameLength }} </label>
+          <!-- <label>{{ fullNameLength }} </label> -->
           <input id="fullName" formControlName="fullName" type="text" class="form-control">
           <span class="help-block" *ngIf="employeeForm.get('fullName').errors && 
           (employeeForm.get('fullName').touched || employeeForm.get('fullName').dirty)">
