@@ -56,6 +56,9 @@ export class CreateEmployeeComponent implements OnInit {
       })
     });
 
+    this.employeeForm.get('contactPreference').valueChanges.subscribe((data: string) => {
+      this.onContactPreferenceChange(data);
+    });
     this.employeeForm.valueChanges.subscribe((data) => {
       this.logValidationErrors(this.employeeForm);
     });
