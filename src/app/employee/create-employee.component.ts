@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl, FormArray } from '@angular/forms';
 import { CustomValidators } from '../shared/custom.validators';
 
 @Component({
@@ -109,8 +109,49 @@ export class CreateEmployeeComponent implements OnInit {
   // If you want to set only particulr value then you need to use patch value.
 
   onLoadDataClick(): void {
-    this.logValidationErrors(this.employeeForm);
-    console.log(this.formErrors);
+
+    const formArray1 = this.fb.array([
+      new FormControl('John', Validators.required),
+      new FormControl('IT', Validators.required),
+      new FormControl('', Validators.required)
+    ]);
+    const formGroup = this.fb.group([
+      new FormControl('John', Validators.required),
+      new FormControl('IT', Validators.required),
+      new FormControl('', Validators.required)
+    ]);
+
+    console.log(formArray1);
+    console.log(formGroup);
+
+    // Difference between form group and form array is form array controls are in the form of array
+    // while form group controls is in the form of object.
+
+    // formArray1.push(new FormControl('Mark', Validators.required));
+    // console.log(formArray1.at(3).value);
+
+    /*
+    const formArray = new FormArray([
+      new FormControl('John', Validators.required),
+      new FormGroup({
+        country: new FormControl('', Validators.required)
+      }),
+      new FormArray([])
+    ]);
+    console.log(formArray.length);
+
+    for (const control of formArray.controls) {
+      if (control instanceof FormControl) {
+        console.log('Control is FormControl');
+      }
+      if (control instanceof FormGroup) {
+        console.log('Control is FormGroup');
+      }
+      if (control instanceof FormArray) {
+        console.log('Control is form Array');
+      }
+    }
+    */
   }
 
   onSubmit() {
