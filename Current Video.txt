@@ -9,6 +9,8 @@
 12 - Move validation messages to the component class in reactive form.
 13 - Move validation logic to the component class in reactive form.
 14 - Dynamically adding or removing form control validators in reactive form.
-15 - Angular reactive form custom validator
+15 - Angular reactive form custom validator.
+16 - Creating and using custom validator with parameters.
+
 
 
