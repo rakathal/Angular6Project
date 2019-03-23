@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { CustomValidators } from '../shared/custom.validators';
 
 @Component({
   selector: 'app-create-employee',
@@ -17,7 +18,7 @@ export class CreateEmployeeComponent implements OnInit {
     },
     'email': {
       'required': 'Email is required.',
-      'emailDomain': 'Email domain should be pragimtech.com'
+      'emailDomain': 'Email domain should be dell.com'
     },
     'phone': {
       'required': 'Phone is required.'
@@ -48,7 +49,7 @@ export class CreateEmployeeComponent implements OnInit {
     this.employeeForm = this.fb.group({
       fullName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]],
       contactPreference: ['email'],
-      email: ['', [Validators.required, emailDomain('dell.com')]],
+      email: ['', [Validators.required, CustomValidators.emailDomain('dell.com')]],
       phone: [''],
       skills: this.fb.group({
         skillName: ['', Validators.required],
@@ -110,17 +111,4 @@ export class CreateEmployeeComponent implements OnInit {
     console.log(this.employeeForm.get('fullName').value);
   }
 
-}
-
-// Using closures
-function emailDomain(domainName: string) {
-  return (control: AbstractControl): { [key: string]: any } | null => {
-    const email: String = control.value;
-    const domain = email.substring(email.lastIndexOf('@') + 1);
-    if (email === '' || domain.toLocaleLowerCase() === domainName.toLocaleLowerCase()) {
-      return null;
-    } else {
-      return { 'emailDomain': true };
-    }
-  };
 }

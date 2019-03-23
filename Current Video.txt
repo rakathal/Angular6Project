@@ -11,6 +11,7 @@
 14 - Dynamically adding or removing form control validators in reactive form.
 15 - Angular reactive form custom validator.
 16 - Creating and using custom validator with parameters.
+17 - How to make angular custom validator reusable.
 
 
 
