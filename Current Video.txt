@@ -18,6 +18,7 @@
 21 - Generating FormGroups and FormControls Dynamically at runtime.
 22 - Generate unique id value for dynamically created form controls.
 23 - Validating dynamically generated form Controls.
+24 - Validating formarray.
 
 
 
