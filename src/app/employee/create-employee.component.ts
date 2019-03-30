@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl, FormArray } from '@angular/forms';
 import { CustomValidators } from '../shared/custom.validators';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from './employee.service';
 import { IEmployee } from './IEmployee';
 import { ISkill } from './ISkill';
@@ -13,6 +13,8 @@ import { ISkill } from './ISkill';
 })
 export class CreateEmployeeComponent implements OnInit {
 
+  employeeForm: FormGroup;
+  employee: IEmployee;
   // This object contains all the validation messages for this form
   validationMessages = {
     'fullName': {
@@ -37,10 +39,11 @@ export class CreateEmployeeComponent implements OnInit {
 
   formErrors = {
   };
-  employeeForm: FormGroup;
+
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
-    private _employeeService: EmployeeService) { }
+    private _employeeService: EmployeeService,
+    private router: Router) { }
 
   ngOnInit() {
     this.employeeForm = this.fb.group({
@@ -74,6 +77,7 @@ export class CreateEmployeeComponent implements OnInit {
   getEmployee(id: number) {
     this._employeeService.getEmployee(id).subscribe((employee: IEmployee) => {
       this.editEmployee(employee);
+      this.employee = employee;
     },
       (error) => console.log(error));
   }
@@ -203,11 +207,19 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.employeeForm.touched);
-    console.log(this.employeeForm.value);
+    this.mapFormValuesToEmployeeModel();
+    this._employeeService.updateEmployee(this.employee).subscribe(() => {
+      this.router.navigate(['list']);
+    },
+    (error: any) => console.log(error));
+  }
 
-    console.log(this.employeeForm.controls.fullName.touched);
-    console.log(this.employeeForm.get('fullName').value);
+  mapFormValuesToEmployeeModel() {
+    this.employee.fullName = this.employeeForm.value.fullName;
+    this.employee.contactPreference = this.employeeForm.value.contactPreference;
+    this.employee.email = this.employeeForm.value.emailGroup.email;
+    this.employee.phone = this.employeeForm.value.phone;
+    this.employee.skills = this.employeeForm.value.skills;
   }
 
 }
