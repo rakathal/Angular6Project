@@ -41,6 +41,20 @@
           "proficiency": "advanced"
         }
       ]
+    },
+    {
+      "id": 3,
+      "fullName": "Raj",
+      "contactPreference": "email",
+      "email": "raj@dell.com",
+      "phone": "9738228938",
+      "skills": [
+        {
+          "skillName": "Angular 7",
+          "experienceInYears": "2",
+          "proficiency": "beginner"
+        }
+      ]
     }
   ]
 }

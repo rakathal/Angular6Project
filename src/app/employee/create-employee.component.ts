@@ -15,6 +15,7 @@ export class CreateEmployeeComponent implements OnInit {
 
   employeeForm: FormGroup;
   employee: IEmployee;
+  pageTitle: string;
   // This object contains all the validation messages for this form
   validationMessages = {
     'fullName': {
@@ -66,10 +67,21 @@ export class CreateEmployeeComponent implements OnInit {
       this.logValidationErrors(this.employeeForm);
     });
 
-    this.route.paramMap.subscribe(param => {
-      const empId = +param.get('id');
+    this.route.paramMap.subscribe(params => {
+      const empId = +params.get('id');
       if (empId) {
+        this.pageTitle = 'Edit Employee';
         this.getEmployee(empId);
+      } else {
+        this.pageTitle = 'Create Employee';
+        this.employee = {
+          id: null,
+          fullName: '',
+          contactPreference: '',
+          email: '',
+          phone: null,
+          skills: []
+        };
       }
     });
   }
@@ -208,10 +220,18 @@ export class CreateEmployeeComponent implements OnInit {
 
   onSubmit() {
     this.mapFormValuesToEmployeeModel();
-    this._employeeService.updateEmployee(this.employee).subscribe(() => {
-      this.router.navigate(['list']);
-    },
-    (error: any) => console.log(error));
+    if (this.employee.id) {
+      this._employeeService.updateEmployee(this.employee).subscribe(() => {
+        this.router.navigate(['list']);
+      },
+        (error: any) => console.log(error));
+    } else {
+      this._employeeService.addEmployee(this.employee).subscribe(() => {
+        this.router.navigate(['list']);
+      },
+        (error: any) => console.log(error));
+    }
+
   }
 
   mapFormValuesToEmployeeModel() {
