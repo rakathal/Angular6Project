@@ -25,7 +25,8 @@
 28 - How to pupulate a form array with existing data.
 29 - Harvesting data from a reactive form and issue a PUT reaquet to the REST API so the data is updated on the server.
 30 - Collecting data from a reactive form and issue a POST request to the REST API so the data is created on the server.
-31 - Angular Modules
+31 - Angular Modules.
+32 - Creating feature module in angular.(Explaing about commonModule and BrowserModule)
 
 
 
