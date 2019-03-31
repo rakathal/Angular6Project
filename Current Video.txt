@@ -27,7 +27,9 @@
 30 - Collecting data from a reactive form and issue a POST request to the REST API so the data is created on the server.
 31 - Angular Modules.
 32 - Creating feature module in angular.(Explaing about commonModule and BrowserModule)
-
+33 - skip
+34 - Creating shared module in angular.
+35 - Grouping routes and creating component less route in angular
 
 
 
