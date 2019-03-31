@@ -29,7 +29,10 @@
 32 - Creating feature module in angular.(Explaing about commonModule and BrowserModule)
 33 - skip
 34 - Creating shared module in angular.
-35 - Grouping routes and creating component less route in angular
+35 - Grouping routes and creating component less route in angular.
+36 - Lazy loading in angular,
+37 - Preloading angular module.
+38 - Angular custom preloading strategy
 
 
 
